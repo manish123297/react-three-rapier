@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import {Canvas} from "@react-three/fiber"
+import SceneInstancedMesh from "./4.InstancedMesh/Scene";
+// import SceneHelloPhysics from "./1.HelloPhysics.jsx/1.Scene";
+// import SceneRigidBodyMethods from "./2.rigidBodyMethods/Scene";
+// import SceneRigidBodyType from "./3.TypesOfRigidBody/Scene";
+import "./styles.css"
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  return ( <div className="root">
+    <Canvas
+      shadows
+      camera={{
+        fov: 45,
+        near: 0.1,
+        far: 100,
+        position: [3, 3, 7],
+      }}
+      >
+      <SceneInstancedMesh></SceneInstancedMesh>
+    </Canvas>
+      </div>
   );
 }
 
