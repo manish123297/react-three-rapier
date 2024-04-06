@@ -6,8 +6,9 @@ const SceneSensor = () => {
     <>
       <OrbitControls />
 
-      <ambientLight intensity={0.5} />
+      <ambientLight intensity={0.9} />
       <directionalLight position={[2, 2, 3]} castShadow />
+      
 
       <PhysicsScene />
     </>

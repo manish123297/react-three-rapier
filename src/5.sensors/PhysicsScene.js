@@ -9,13 +9,13 @@ const PhysicsScene = () => {
   const sphereRef = useRef();
 
   const sphereHandler = () => {
-    sphereRef.current.applyImpulse({ x: 0, y: 2.25, z: -2.25 });
+    sphereRef.current.applyImpulse({ x: 0, y: 4.25, z: -5.25 });
   };
 
   return (
     <>
-      <Physics debug>
-        <RigidBody ref={sphereRef} position={[0, 2.5, 5]} colliders="hull">
+      <Physics debug >
+        <RigidBody ref={sphereRef} position={[-0.8, 2.5, 5]} colliders="hull">
           <mesh castShadow onClick={sphereHandler}>
             <sphereGeometry args={[0.5, 16, 16]} />
             <meshStandardMaterial color="#CC3941" />
@@ -30,20 +30,50 @@ const PhysicsScene = () => {
             onIntersectionEnter={() => setTouch(true)} //this will run when some other rigid  body intersect this
             onIntersectionExit={() => setTouch(false)}//run when rigid body go out of the this 
             //collider/rigidbody/mesh
+            
           />
         </RigidBody>
 
+        
+         {/* floor */}
         <RigidBody type="fixed" restitution={0.4}>
-          <mesh position-y={-1} rotation-x={-Math.PI * 0.5} receiveShadow>
+          <mesh position-y={-1}  rotation-x={-Math.PI * 0.5} receiveShadow>
             <boxGeometry args={[15, 15, 0.35]} />
             <meshStandardMaterial color="#C7CAC7" />
           </mesh>
         </RigidBody>
+        {/* front wall */}
+
+      <RigidBody type="fixed" restitution={0.3}>
+          <mesh position-y={1.6} position-z={-7.3} rotation-x={-Math.PI * 0.5} receiveShadow>
+            <boxGeometry args={[15, 0.35, 5]} />
+            <meshStandardMaterial color="grey" />
+          </mesh>
+        </RigidBody>
+      {/* left wall */}
+      <RigidBody type="fixed" restitution={0.3}>
+          <mesh position-y={0} position-x={-7.28} rotation-x={-Math.PI * 0.5} receiveShadow>
+            <boxGeometry args={[0.35, 15, 2]} />
+            <meshStandardMaterial color="grey" />
+          </mesh>
+        </RigidBody>
+    {/*Right wall  */}
+    <RigidBody type="fixed" restitution={0.3}>
+          <mesh position-y={0} position-x={7.5} rotation-x={-Math.PI * 0.5} receiveShadow>
+            <boxGeometry args={[0.35, 15, 2]} />
+            <meshStandardMaterial color="grey" />
+          </mesh>
+        </RigidBody>
       </Physics>
 
+    
+
+
+      
+
       {touch && (
-        <Text3D font="./fonts/2.json" position={[-1.75, 3, -5]}>
-          Goal
+        <Text3D font="./fonts/2.json" position={[-4.75, 2, -5]}>
+          Goal Ho Gya
           <meshNormalMaterial />
         </Text3D>
         )}  
