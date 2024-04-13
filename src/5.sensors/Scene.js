@@ -8,7 +8,6 @@ const SceneSensor = () => {
 
       <ambientLight intensity={0.9} />
       <directionalLight position={[2, 2, 3]} castShadow />
-      
 
       <PhysicsScene />
     </>
